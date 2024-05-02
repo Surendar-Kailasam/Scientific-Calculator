@@ -18,7 +18,7 @@ function evaluateResult(){
     .replace('√','Math.sqrt');
     const result= eval(convertedValue);
     console.log(currentValue, "\n" , result.toString());
-    display.value=(currentValue, "\n" , result.toString());
+    display.value=(currentValue .concat('\n', result.toString()));
 }
 for (let i=0; i<buttons.length; i++){
     const button=buttons[i];
