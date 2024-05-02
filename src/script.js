@@ -9,29 +9,36 @@ function evaluateResult(){
     .replace("÷","/")
     .replace('%','*0.01')
     .replace('sin','Math.sin')
-    .replace('ln','math.log10')
-    .replace('π','math.pi')
-    .replace('cos','math.cos')
-    .replace('log','math.log')
-    .replace('e','math.e')
-    .replace('tan','math.tan')
-    .replace('√','math.sqrt');
+    .replace('ln','Math.log10')
+    .replace('π','Math.PI')
+    .replace('cos','Math.cos')
+    .replace('log','Math.log')
+    .replace('e','Math.E')
+    .replace('tan','Math.tan')
+    .replace('√','Math.sqrt');
     const result= eval(convertedValue);
-    currentValue=result.toString();
-    display.value=currentValue;
+    console.log(currentValue, "\n" , result.toString());
+    display.value=(currentValue, "\n" , result.toString());
 }
 for (let i=0; i<buttons.length; i++){
     const button=buttons[i];
     button.addEventListener('click', function(){
         const value= button.innerText;
-        if (value == "AC") {
-            currentValue = "";
+        try{
+            if (value == "AC") {
+                currentValue = "";
+                display.value=currentValue;
+            }else if (value=="="){
+                evaluateResult();
+            }else{
+            currentValue += value;
+            display.value = currentValue;
+            }
+        }
+        catch(error){
+            console.error(error);
+            currentValue='ERROR';
             display.value=currentValue;
-        }else if (value=="="){
-            evaluateResult();
-        }else{
-        currentValue += value;
-        display.value = currentValue;
         }
     })
     
