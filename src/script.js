@@ -7,7 +7,15 @@ function evaluateResult(){
     const convertedValue = currentValue
     .replace("×","*")
     .replace("÷","/")
-    .replace('%','*0.01');
+    .replace('%','*0.01')
+    .replace('sin','Math.sin')
+    .replace('ln','math.log10')
+    .replace('π','math.pi')
+    .replace('cos','math.cos')
+    .replace('log','math.log')
+    .replace('e','math.e')
+    .replace('tan','math.tan')
+    .replace('√','math.sqrt');
     const result= eval(convertedValue);
     currentValue=result.toString();
     display.value=currentValue;
